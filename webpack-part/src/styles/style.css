@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'museomodernosemibold';
+    src: url('../assets/fonts/museomoderno-variablefont_wght-webfont.woff2') format('woff2'),
+    url('../assets/fonts/museomoderno-variablefont_wght-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-color: khaki;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.heading {
+    text-align: center;
+    font: normal small-caps 76px/1.2 museomodernosemibold;
+}
+
+.linksWrapper {
+    display: inherit;
+}
+
+.link {
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    margin: 10px;
+    border-radius: 100%;
+    background-position: center;
+}
+.link:hover {
+    opacity: 0.75;
+}
+.link[title="github"] {
+    background-image: url("../assets/images/github-icon.jpg");
+}
+.link[title="telegram"] {
+    background-image: url("../assets/images/telegram-icon.png");
+}
+.link[title="e-mail"] {
+    background-image: url("../assets/images/email-icon.gif");
+}
+.link[title="linkedin"] {
+    background-image: url("../assets/images/linkedin-icon.svg");
+}
