@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -54,8 +55,15 @@ module.exports = {
       }
     ],
   },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    port: 3000,
+    watchContentBase: true,
+    hot: true
+  },
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({title: "Forte Frontend Jedi Course"})
+    new HtmlWebpackPlugin({title: "Forte Frontend Jedi Course"}),
+    new webpack.HotModuleReplacementPlugin()
   ],
 };
