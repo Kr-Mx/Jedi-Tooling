@@ -1,8 +1,9 @@
 import React from 'react'
+import styled from 'styled-components'
 import logo from './logo.svg'
 import './App.scss'
-// eslint-disable-next-line import/order
-import styled from 'styled-components'
+import 'sanitize.css'
+import 'normalize.css'
 
 const Button = styled.a`
   background: transparent;
