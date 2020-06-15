@@ -1,7 +1,7 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const webpack = require('webpack');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   entry: './src/index.js',
@@ -17,13 +17,20 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader',
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            },
+          }],
       },
       {
         test: /\.(png|jpg|gif|svg)$/i,
@@ -31,17 +38,18 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: 'images'
-            }},
+              outputPath: 'images',
+            },
+          },
           {
             loader: 'image-webpack-loader',
             options: {
               mozjpeg: {
                 progressive: true,
-                quality: 65
+                quality: 65,
               },
-            }
-          }
+            },
+          },
         ],
       },
       {
@@ -49,21 +57,15 @@ module.exports = {
         use: [{
           loader: 'file-loader',
           options: {
-            outputPath: 'fonts'
-          }
-        }]
-      }
+            outputPath: 'fonts',
+          },
+        }],
+      },
     ],
   },
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    port: 3000,
-    watchContentBase: true,
-    hot: true
-  },
   plugins: [
+    new MiniCssExtractPlugin({ filename: '[name].css' }),
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({title: "Forte Frontend Jedi Course"}),
-    new webpack.HotModuleReplacementPlugin()
+    new HtmlWebpackPlugin({ title: "Forte Frontend Jedi Course" }),
   ],
-};
+}
