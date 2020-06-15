@@ -1,6 +1,18 @@
 import React from 'react'
 import logo from './logo.svg'
-import './App.css'
+import './App.scss'
+// eslint-disable-next-line import/order
+import styled from 'styled-components'
+
+const Button = styled.a`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+  text-decoration: none;
+  margin: 1em;
+  padding: 0.25em 1em;
+`
 
 function App() {
   return (
@@ -20,6 +32,7 @@ function App() {
         >
           Learn React
         </a>
+        <Button href="https://styled-components.com/">Styled Button</Button>
       </header>
     </div>
   )
